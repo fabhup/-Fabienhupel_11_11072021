@@ -8,6 +8,8 @@ import '../styles/App.css';
 import Banner from './Banner'
 import Home from '../pages/Home'
 import Apartment from '../pages/Apartment'
+import About from '../pages/About'
+import ErrorPage from '../pages/ErrorPage'
 import Footer from './Footer'
 
 export default function App() {
@@ -20,14 +22,17 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/appartement/:id">
+          <Route exact path="/appartement/:id/:text">
             <Apartment />
           </Route>
-          <Route path="/apropos">
+          <Route exact path="/a-propos">
             <About />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Home />
+          </Route>
+          <Route>
+            <ErrorPage />
           </Route>
         </Switch>
       <Footer>
@@ -35,9 +40,5 @@ export default function App() {
       </div>
     </Router>
   );
-}
-
-function About() {
-  return <h2>A propos</h2>;
 }
 

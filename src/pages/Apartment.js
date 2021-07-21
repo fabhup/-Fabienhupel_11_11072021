@@ -7,13 +7,16 @@ import HostCard from '../components/HostCard'
 import Collapse from '../components/Collapse'
 import Gallery from '../components/Gallery'
 import Tag from '../components/Tag'
+import '../styles/ErrorPage.css'
+import ErrorPage from '../pages/ErrorPage'
 
 function getApartmentData(id) {
   return propertiesData.find(element => element.id === id)
 }
 
 function Apartment() {
-    const { id } = useParams();
+  const { id } = useParams();
+  try {
     const apartmentData = getApartmentData(id);
     return <div className="kasa-apartment-content">
         <Gallery picturesURL={apartmentData.pictures}/>
@@ -44,6 +47,10 @@ function Apartment() {
           />
         </div> 
       </div>
+  }
+  catch {
+    return ErrorPage()
+  }
   }
 
   export default Apartment

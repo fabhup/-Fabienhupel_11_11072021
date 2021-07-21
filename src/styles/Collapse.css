@@ -17,6 +17,14 @@
     position:relative;
     z-index:1;
     line-height: 2em;
+    opacity:1;
+    transform: scale(1);
+    transition: all 300ms ease-out;
+  }
+
+  .collapse-title:hover {
+    opacity: 0.9;
+    transform: scale(1.01);
   }
 
   .collapse-title:after {
@@ -47,16 +55,31 @@
     position: relative;
     top: -16px;
     z-index: 0;
+    animation: rotateX 400ms ease-in-out forwards;
+    transform-origin: top center;
   }
 
   .collapse.opened .collapse-content  {
     display: block;
   }
 
-  .collapse.closed .collapse-content  {
+  /* .collapse.closed .collapse-content  {
     display: none;
-  }
+  } */
 
+  @keyframes rotateX {
+    0% {
+      opacity: 0;
+      transform: rotateX(-90deg);
+    }
+    50% {
+      transform: rotateX(-20deg);
+    }
+    100% {
+      opacity: 1;
+      transform: rotateX(0deg);
+    }
+  }
 
 @media screen and (max-width: 767px){
   .collapse {

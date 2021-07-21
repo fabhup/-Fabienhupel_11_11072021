@@ -10,7 +10,7 @@ function MainNav() {
               <NavLink exact to="/" id="link-accueil" className='kasa-main-nav-link'>Accueil</NavLink>
             </li>
             <li>
-              <NavLink exact to="/apropos" id="link-apropos" className='kasa-main-nav-link'>À Propos</NavLink>
+              <NavLink exact to="/a-propos" id="link-apropos" className='kasa-main-nav-link'>À Propos</NavLink>
             </li>
           </ul>
         </nav>
