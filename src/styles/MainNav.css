@@ -1,0 +1,36 @@
+
+.kasa-main-nav nav ul  {
+    display: flex;
+    justify-content:space-between;
+    list-style: none;
+    text-decoration: none;
+    padding: 0 0.5em;
+}  
+.kasa-main-nav li a {
+    text-decoration: none;
+    color: #FF6060;
+}   
+
+.kasa-main-nav li {
+    margin: 0 20px;
+    font-weight: bold;
+    font-size: 1.5em;
+}   
+
+.kasa-main-nav-link.active {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 767px){
+    .kasa-main-nav li  {
+        margin: 0 10px;
+        text-transform: uppercase ;
+        font-size: .75em;
+    } 
+}
+
+@media screen and (max-width: 300px){
+    .kasa-main-nav li  {
+        font-size: .625em;
+    } 
+}

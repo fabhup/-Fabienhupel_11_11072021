@@ -1,0 +1,16 @@
+
+.kasa-banner {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 5px;
+  }
+
+.kasa-logo {
+    width: calc(120px + 5vw);
+}
+
+@media screen and (max-width: 300px){
+  .kasa-logo {
+    width: calc(60px + 7vw);
+  }
+}

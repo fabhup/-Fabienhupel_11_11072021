@@ -1,0 +1,15 @@
+.kasa-tag {
+    color:white;
+    background:#FF6060;
+    border-radius: 10px;
+    line-height: 1.6em;
+    border: none;
+    margin: 5px 10px 5px 0;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 767px){
+    .kasa-tag {
+        border-radius: 5px;
+    }
+}

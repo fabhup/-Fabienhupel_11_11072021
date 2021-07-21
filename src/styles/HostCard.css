@@ -1,0 +1,27 @@
+
+.hostcard {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.hostcard-picture {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100%;
+    width: 64px;
+    height: 64px;
+    margin: 0 10px;
+}
+
+.hostcard-name {
+    display: block;
+    color:#FF6060;
+    font-size: 18px;
+    line-height: 1.5em;
+    height: 3em;   
+    overflow: hidden;
+    white-space: pre-line;
+    width: min-content;
+    margin: 2px 0px
+}

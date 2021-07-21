@@ -1,0 +1,74 @@
+.collapse {
+ margin: 10px 10px 0px;
+ width: 50%;
+}
+
+.collapse-title {
+    background-color: #FF6060;
+    color: white;
+    cursor: pointer;
+    padding: 8px 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    font-size: 1.125em;
+    border-radius: 10px;
+    overflow: hidden;
+    position:relative;
+    z-index:1;
+    line-height: 2em;
+  }
+
+  .collapse-title:after {
+    content: '\02303'; /* Unicode character for "plus" sign (+) */
+    font-size: 2em;
+    font-weight: 500;
+    color: white;
+    float: right;
+    position:relative;
+    top: -.2em;
+    transform: rotate(180deg);
+  }
+
+  .collapse.opened .collapse-title:after {
+    transform: rotate(0deg);
+    top: .2em;
+  }
+
+  .collapse-content {
+    padding: 40px 20px 30px;
+    font-size: 1.125em;
+    font-weight: normal;
+    display: none;
+    overflow: hidden;
+    background-color: #F6F6F6;
+    color: #FF6060;
+    border-radius: 10px;
+    position: relative;
+    top: -16px;
+    z-index: 0;
+  }
+
+  .collapse.opened .collapse-content  {
+    display: block;
+  }
+
+  .collapse.closed .collapse-content  {
+    display: none;
+  }
+
+
+@media screen and (max-width: 767px){
+  .collapse {
+    width: 100%;
+   } 
+  .collapse-title {
+    font-size: .812em;
+    padding: 5px 15px;
+    border-radius: 5px;
+  }
+  .collapse-content {
+    font-size: .75em;
+    border-radius: 5px;
+  }
+}

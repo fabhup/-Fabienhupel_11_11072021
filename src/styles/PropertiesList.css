@@ -1,0 +1,19 @@
+
+.kasa-properties-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    background: #F6F6F6;
+    border-radius: 10px;
+    margin: 20px 0px ;
+}
+
+@media screen and (max-width: 767px){
+    .kasa-properties-list {
+        margin: 5px 0px;
+        background: inherit;
+    }
+}
