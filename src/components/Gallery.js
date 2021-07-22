@@ -24,13 +24,13 @@ function Gallery ({picturesURL}) {
         })
         }
         <button 
-            className="prev" 
+            className={nbPictures>1 ? "prev" : "prev hidden"}
             onClick={() => prevPicture()}
         >
             &#10094;
         </button>
         <button 
-            className="next" 
+            className={nbPictures>1 ? "next" : "next hidden"}
             onClick={() => nextPicture()}
         >
             &#10095;

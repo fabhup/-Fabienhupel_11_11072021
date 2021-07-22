@@ -34,8 +34,9 @@
     color: white;
     float: right;
     position:relative;
-    top: -.2em;
+    top: -.1em;
     transform: rotate(180deg);
+    margin: 0 auto -16px;
   }
 
   .collapse.opened .collapse-title:after {
