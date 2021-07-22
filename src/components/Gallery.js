@@ -3,14 +3,31 @@ import { useState } from 'react'
 
 function Gallery ({picturesURL}) {
     const [activeIndex, setActiveIndex] = useState(0)
+    const [touchStart, setTouchStart] = useState(0);
+    const [touchEnd, setTouchEnd] = useState(0);
     const nbPictures = picturesURL.length;
 
     const prevPicture = () => {
         setActiveIndex(activeIndex === 0 ? nbPictures - 1 : activeIndex - 1)
     }
-
     const nextPicture = () => {
         setActiveIndex(activeIndex === nbPictures - 1 ? 0 : activeIndex + 1)
+    }
+    const handleTouchStart = (e) => {
+        setTouchStart(e.targetTouches[0].clientX);
+    }
+    const handleTouchMove = (e) =>  {
+        setTouchEnd(e.targetTouches[0].clientX);
+    }
+    const handleTouchEnd = () =>  {
+        if (touchStart - touchEnd > 150) {
+            // do your stuff here for left swipe
+            nextPicture();
+        }
+        if (touchStart - touchEnd < -150) {
+            // do your stuff here for right swipe
+            prevPicture();
+        }
     }
 
     return <div className="gallery">
@@ -19,7 +36,14 @@ function Gallery ({picturesURL}) {
                 <div className="gallery-slide-number">
                     {index+1}/{nbPictures}
                 </div>
-                <img className="gallery-slide-picture" src={picture} alt={"picture " + (index+1)}></img>
+                <img 
+                    className="gallery-slide-picture" 
+                    src={picture} 
+                    alt={"picture " + (index+1)}
+                    onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}
+                    onTouchMove={touchMoveEvent => handleTouchMove(touchMoveEvent)}
+                    onTouchEnd={() => handleTouchEnd()}
+                ></img>
             </div>
         })
         }
