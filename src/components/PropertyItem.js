@@ -1,18 +1,36 @@
-import '../styles/PropertyItem.css';
-import {Link} from "react-router-dom";
-import {cleanStringForLink} from "../functions/cleanData"
+import "../styles/PropertyItem.css";
+import { Link } from "react-router-dom";
+import { cleanStringForLink } from "../functions/cleanData";
+import PropTypes from "prop-types";
+import { Component } from "react";
 
-
-function PropertyItem({ id, cover, title }) {
-	return (
-			<li className='kasa-property-item'>
-				<Link to={{pathname: `/appartement/${id}/${cleanStringForLink(title)}`}}>
-					<img className='kasa-property-item-cover' src={cover} alt={`${title} cover`} />
-					<span className='kasa-property-item-title'>{title}</span>
-				</Link>
-			</li>
-
-	)
+class PropertyItem extends Component {
+  render() {
+    return (
+      <li className="kasa-property-item">
+        <Link
+          to={{
+            pathname: `/appartement/${this.props.id}/${cleanStringForLink(
+              this.props.title
+            )}`,
+          }}
+        >
+          <img
+            className="kasa-property-item-cover"
+            src={this.props.cover}
+            alt={`${this.props.title} cover`}
+          />
+          <span className="kasa-property-item-title">{this.props.title}</span>
+        </Link>
+      </li>
+    );
+  }
 }
 
-export default PropertyItem
+PropertyItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  cover: PropTypes.string.isRequired,
+};
+
+export default PropertyItem;

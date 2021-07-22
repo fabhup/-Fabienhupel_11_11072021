@@ -1,17 +1,18 @@
+import "../styles/HomeContent.css";
+import PropertiesList from "../components/PropertiesList";
+import { Component } from "react";
 
-import '../styles/HomeContent.css'
-import PropertiesList from '../components/PropertiesList'
-
-
-function Home() {
-    return <div> 
-        <div className='kasa-tagline'>
-            <span>Chez vous, partout et ailleurs</span>
+class Home extends Component {
+  render() {
+    return (
+      <div>
+        <div className="kasa-tagline">
+          <span>Chez vous, partout et ailleurs</span>
         </div>
-        <PropertiesList>
-        </PropertiesList>
-    </div>
-        ;
+        <PropertiesList></PropertiesList>
+      </div>
+    );
   }
+}
 
-  export default Home
+export default Home;

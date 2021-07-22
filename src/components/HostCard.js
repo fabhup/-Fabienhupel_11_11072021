@@ -1,10 +1,25 @@
-import '../styles/HostCard.css'
+import "../styles/HostCard.css";
+import { Component } from "react";
+import PropTypes from "prop-types";
 
-function HostCard ({hostName, hostImageURL}) {
-    return <div className="hostcard">
-        <span className="hostcard-name">{hostName}</span>
-        <img className="hostcard-picture" src={hostImageURL} alt={"Photo de profil de " + hostName}/>
+class HostCard extends Component {
+  render() {
+    return (
+      <div className="hostcard">
+        <span className="hostcard-name">{this.props.hostName}</span>
+        <img
+          className="hostcard-picture"
+          src={this.props.hostImageURL}
+          alt={"Photo de profil de " + this.props.hostName}
+        />
       </div>
+    );
   }
+}
 
-  export default HostCard
+HostCard.propTypes = {
+  hostName: PropTypes.string.isRequired,
+  hostImageURL: PropTypes.string.isRequired,
+};
+
+export default HostCard;

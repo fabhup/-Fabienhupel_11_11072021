@@ -1,65 +1,88 @@
-import '../styles/Gallery.css'
-import { useState } from 'react'
+import "../styles/Gallery.css";
+import { Component } from "react";
 
-function Gallery ({picturesURL}) {
-    const [activeIndex, setActiveIndex] = useState(0)
-    const [touchStart, setTouchStart] = useState(0);
-    const [touchEnd, setTouchEnd] = useState(0);
-    const nbPictures = picturesURL.length;
+class Gallery extends Component {
+  state = { activeIndex: 0, touchStart: 0, touchEnd: 0 };
+  render() {
+    const nbPictures = this.props.picturesURL.length;
 
     const prevPicture = () => {
-        setActiveIndex(activeIndex === 0 ? nbPictures - 1 : activeIndex - 1)
-    }
+      this.setState({
+        activeIndex:
+          this.state.activeIndex === 0
+            ? nbPictures - 1
+            : this.state.activeIndex - 1,
+      });
+    };
     const nextPicture = () => {
-        setActiveIndex(activeIndex === nbPictures - 1 ? 0 : activeIndex + 1)
-    }
+      this.setState({
+        activeIndex:
+          this.state.activeIndex === nbPictures - 1
+            ? 0
+            : this.state.activeIndex + 1,
+      });
+    };
     const handleTouchStart = (e) => {
-        setTouchStart(e.targetTouches[0].clientX);
-    }
-    const handleTouchMove = (e) =>  {
-        setTouchEnd(e.targetTouches[0].clientX);
-    }
-    const handleTouchEnd = () =>  {
-        if (touchStart - touchEnd > 150) {
-            // do your stuff here for left swipe
-            nextPicture();
-        }
-        if (touchStart - touchEnd < -150) {
-            // do your stuff here for right swipe
-            prevPicture();
-        }
-    }
+      this.setState({ touchStart: e.targetTouches[0].clientX });
+    };
+    const handleTouchMove = (e) => {
+      this.setState({ touchEnd: e.targetTouches[0].clientX });
+    };
 
-    return <div className="gallery">
-        {picturesURL.map((picture, index) => {
-            return <div className={index === activeIndex ? "gallery-slide active" : "gallery-slide"} key={index+1}> 
-                <div className="gallery-slide-number">
-                    {index+1}/{nbPictures}
-                </div>
-                <img 
-                    className="gallery-slide-picture" 
-                    src={picture} 
-                    alt={"picture " + (index+1)}
-                    onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}
-                    onTouchMove={touchMoveEvent => handleTouchMove(touchMoveEvent)}
-                    onTouchEnd={() => handleTouchEnd()}
-                ></img>
+    const handleTouchEnd = () => {
+      if (this.state.touchStart - this.state.touchEnd > 150) {
+        nextPicture();
+      }
+      if (this.state.touchStart - this.state.touchEnd < -150) {
+        prevPicture();
+      }
+    };
+
+    return (
+      <div className="gallery">
+        {this.props.picturesURL.map((picture, index) => {
+          return (
+            <div
+              className={
+                index === this.state.activeIndex
+                  ? "gallery-slide active"
+                  : "gallery-slide"
+              }
+              key={index + 1}
+            >
+              <div className="gallery-slide-number">
+                {index + 1}/{nbPictures}
+              </div>
+              <img
+                className="gallery-slide-picture"
+                src={picture}
+                alt={"picture " + (index + 1)}
+                onTouchStart={(touchStartEvent) =>
+                  handleTouchStart(touchStartEvent)
+                }
+                onTouchMove={(touchMoveEvent) =>
+                  handleTouchMove(touchMoveEvent)
+                }
+                onTouchEnd={() => handleTouchEnd()}
+              ></img>
             </div>
-        })
-        }
-        <button 
-            className={nbPictures>1 ? "prev" : "prev hidden"}
-            onClick={() => prevPicture()}
+          );
+        })}
+        <button
+          className={nbPictures > 1 ? "prev" : "prev hidden"}
+          onClick={() => prevPicture()}
         >
-            &#10094;
+          &#10094;
         </button>
-        <button 
-            className={nbPictures>1 ? "next" : "next hidden"}
-            onClick={() => nextPicture()}
+        <button
+          className={nbPictures > 1 ? "next" : "next hidden"}
+          onClick={() => nextPicture()}
         >
-            &#10095;
+          &#10095;
         </button>
-    </div>
+      </div>
+    );
+  }
 }
 
-export default Gallery
+export default Gallery;
