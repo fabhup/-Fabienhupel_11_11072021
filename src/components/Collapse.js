@@ -7,15 +7,16 @@ class Collapse extends Component {
   state = { isOpen: false };
   render() {
     const { isOpen } = this.state;
+
+    const updateState = () => {
+      isOpen ? this.setState({ isOpen: false }) : this.setState({ isOpen: true })
+    }
+
     return (
       <div className={"collapse " + (isOpen ? "opened" : "closed")}>
         <button
           className="collapse-title"
-          onClick={() => {
-            isOpen
-              ? this.setState({ isOpen: false })
-              : this.setState({ isOpen: true });
-          }}
+          onClick={() => updateState()}
         >
           {this.props.collapseTitle}
         </button>
