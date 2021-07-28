@@ -21,7 +21,7 @@ class Apartment extends Component {
     try {
       const apartmentData = getApartmentData(id);
       return (
-        <div className="kasa-apartment-content">
+        <main className="kasa-apartment-content">
           <Gallery picturesURL={apartmentData.pictures} />
           <div className="kasa-apartment-title">
             <h1>{apartmentData.title}</h1>
@@ -59,7 +59,7 @@ class Apartment extends Component {
               }
             />
           </div>
-        </div>
+        </main>
       );
     } catch {
       return <ErrorPage/>;
