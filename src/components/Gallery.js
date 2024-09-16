@@ -30,10 +30,10 @@ class Gallery extends Component {
     };
 
     const handleTouchEnd = () => {
-      if (this.state.touchStart - this.state.touchEnd > 150) {
+      if (this.state.touchStart - this.state.touchEnd > 100) {
         nextPicture();
       }
-      if (this.state.touchStart - this.state.touchEnd < -150) {
+      if (this.state.touchStart - this.state.touchEnd < -100) {
         prevPicture();
       }
     };
